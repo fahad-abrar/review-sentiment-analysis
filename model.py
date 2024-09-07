@@ -47,11 +47,11 @@ class Review_Prediction_model:
     def print_result(self, content):
         result = self.predict(content)
         if result == 2:
-            message = 'Positive review'
+            message = 'Positive'
         elif result == 1:
-            message = 'Neutral review'
+            message = 'Neutral'
         else:
-            message = 'Negative review'
+            message = 'Negative'
 
         return message
 
