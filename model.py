@@ -16,8 +16,8 @@ class Review_Prediction_model:
         self.model = pickle.load(open('ml-model/model.sav', 'rb'))
 
     '''
-    define a fuction for
-    remove stopwords and apply stemming
+    # define a fuction for
+    # remove stopwords and apply stemming
 
     '''
     def stemming(self, content):
@@ -41,20 +41,17 @@ class Review_Prediction_model:
         return result[0]  
 
     '''
-    print the final result
+    # send the final result
     '''
+
     def print_result(self, content):
         result = self.predict(content)
         if result == 2:
-            print('Positive review')
+            message = 'Positive review'
         elif result == 1:
-            print('Neutral review')
+            message = 'Neutral review'
         else:
-            print('Negative review')
+            message = 'Negative review'
 
-
-if __name__ == "__main__":
-    review_model = Review_Prediction_model()
-    content = 'nice'
-    review_model.print_result(content)
+        return message
 
