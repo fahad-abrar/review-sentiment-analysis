@@ -4,7 +4,12 @@
 // it is not part this back end
 
 '''
+from dotenv import load_dotenv
 import pika
+import os
+
+load_dotenv()
+url = os.getenv('URL')
 
 def callback(ch, method, properties, body):
     print("Message received:", body.decode())
@@ -13,7 +18,7 @@ def callback(ch, method, properties, body):
 
 def consume_content():
     try:
-        url = pika.URLParameters('amqps://dzpcyzjh:d29a-usR4GLTaivnyiYkk2tbpJIdOsnX@puffin.rmq2.cloudamqp.com/dzpcyzjh')
+        url = pika.URLParameters(url)
         connection = pika.BlockingConnection(url)
         channel = connection.channel()
 

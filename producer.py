@@ -1,10 +1,16 @@
+from dotenv import load_dotenv
 import pika
 import json
+import os
+
+
+load_dotenv()
+url = os.getenv('URL')
 
 def produce_content(msg):
     try:
         # establish connection to RabbitMQ
-        url = pika.URLParameters('amqps://dzpcyzjh:d29a-usR4GLTaivnyiYkk2tbpJIdOsnX@puffin.rmq2.cloudamqp.com/dzpcyzjh')
+        url = pika.URLParameters(url)
         connection = pika.BlockingConnection(url)
         channel = connection.channel()
 
